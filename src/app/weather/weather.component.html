@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Search for Weather:</h3>
+      <form
+        [formGroup]="weatherSearchForm"
+        (ngSubmit)="sendToAPIXU(weatherSearchForm.value)"
+      >
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a Location"
+            formControlName="location"
+          />
+        </div>
+        <div class="text-center my-4">
+          <button type="submit" class="btn btn-success btn-md">
+            Search for the weather
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Weather Details:</h3>
+      <p class="text-center">
+        <img src = "{{ this.weatherData?.current.weather_icons[0] }}">
+      </p>
+      <p class="text-center my-4">
+        Temperature in Degrees Celsius: {{ this.weatherData?.current.temperature }}
+      </p>
+      <p class="text-center my-4">
+        Feels like in Degrees Celsius: {{ this.weatherData?.current.feelslike
+        }}
+      </p>
+      <p class="text-center my-4">
+        Humidity: {{
+        this.weatherData?.current.humidity }}
+      </p>
+      <p class="text-center my-4">
+        Observation Time: {{ this.weatherData?.current.observation_time }}.
+      </p>
+      <p class="text-center my-4">
+        Weather Descriptions: {{ this.weatherData?.current.weather_descriptions[0] }}.
+      </p>
+      <p class="text-center my-4">
+        Wind Direction: {{ this.weatherData?.current.wind_dir }}.
+      </p>
+      <p class="text-center my-4">
+        Location Searched: {{ this.weatherData?.location.name }}, {{
+        this.weatherData?.location.country }}.
+      </p>
+    </div>
+  </div>
+</div>
